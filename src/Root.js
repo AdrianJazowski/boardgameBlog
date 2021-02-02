@@ -1,37 +1,33 @@
 /** @format */
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { auth } from "./firebase/firebaseConfig";
 import Router from "./routing/Router";
 import Admin from "./views/Admin";
 import Home from "./views/Home";
+import { loginAdmin } from "./actions";
 // import RegisterForm from "./componenets/RegisterForm";
 
-const Root = ({ currentUser, setCurrentUser }) => {
+const Root = () => {
+  const selectedAdmin = useSelector((state) => state.admin);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        setCurrentUser(user);
+        dispatch(loginAdmin(user.uid));
       } else {
-        setCurrentUser(null);
+        dispatch(loginAdmin(null));
       }
     });
-  }, [currentUser]);
+  }, [selectedAdmin]);
 
   return (
     <div>
       <Router />
-      {currentUser ? <Admin /> : <Home />}
+      {selectedAdmin ? <Admin /> : <Home />}
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  currentUser: state.currentUser,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setCurrentUserAction(user)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Root);
+export default Root;
