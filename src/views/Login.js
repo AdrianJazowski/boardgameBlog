@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import LoginForm from "../componenets/LoginForm";
+import LoginForm from "../componenets/forms/LoginForm";
 
 const Login = () => {
   return (
