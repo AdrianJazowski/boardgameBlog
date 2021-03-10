@@ -3,13 +3,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import "./index.css";
-import Root from "./Root";
+// import Root from "./Root";
+import Router from "./routing/Router";
 import store from "./store";
 
 ReactDOM.render(
   <Provider store={store}>
-    <Root />
+    <Router />
   </Provider>,
   document.getElementById("root")
 );
