@@ -1,37 +1,48 @@
 /** @format */
 
 import React from "react";
-import {
-  MainPageWrapper,
-  OnePostContainer,
-  PostDescription,
-  PostHeading,
-  PostImg,
-  PostContents,
-} from "./MainPageStyles";
-import { productsData } from "../../localData/localData";
+import { MainPageWrapper } from "./MainPageStyles";
+import LeftSidebar from "../../componenets/leftSidebar/LeftSidebar";
+import RightSidebar from "../../componenets/rightSidebar/RightSidebar";
+import Content from "../../componenets/content/Content";
 
 const MainPage = () => {
   return (
-    <>
-      <MainPageWrapper>
-        {productsData.map((post) => {
-          const { productName, productDescription, photo } = post;
-          return (
-            <>
-              <OnePostContainer>
-                <PostImg src={photo} />
-                <PostContents>
-                  <PostHeading>{productName}</PostHeading>
-                  <PostDescription>{productDescription}</PostDescription>
-                </PostContents>
-              </OnePostContainer>
-            </>
-          );
-        })}
-      </MainPageWrapper>
-    </>
+    <MainPageWrapper>
+      <LeftSidebar />
+      <Content />
+      <RightSidebar />
+    </MainPageWrapper>
   );
 };
 
 export default MainPage;
+{
+  /* <MainPageWrapper>
+        {posts.map((post) => {
+          const { productName, description, coments, id } = post;
+          return (
+            <PostsList key={id}>
+              <OnePostContainer>
+                <PostLink
+                  to={{
+                    pathname: `/post/${productName.replace(/\s/g, "")}`,
+                    state: {
+                      ...post,
+                    },
+                  }}
+                ></PostLink>
+
+                <PostContents>
+                  <PostHeading>{productName}</PostHeading>
+                  <PostHeading>{description}</PostHeading>
+                  {coments.map((coment) => (
+                    <p>{coment}</p>
+                  ))}
+                </PostContents>
+              </OnePostContainer>
+            </PostsList>
+          );
+        })}
+      </MainPageWrapper>  */
+}

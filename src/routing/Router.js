@@ -4,6 +4,7 @@ import React from "react";
 import { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import AddPost from "../componenets/addPost/AddPost";
 import Navbar from "../componenets/navbar/Navbar";
 import GlobalStyles from "../globalStyles/GlobalStyles";
 import { mainTheme } from "../globalStyles/mainTheme";
@@ -23,6 +24,7 @@ const Router = () => {
           <Route exact path={routes.home} component={Root} />
           <Route path={routes.login} component={Login} />
           <Route path={routes.singlePost} component={SinglePost} />
+          <Route path={routes.addPost} component={AddPost} />
         </Switch>
       </ThemeProvider>
     </BrowserRouter>

@@ -3,10 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { auth } from "./firebase/firebaseConfig";
 import { loginAdmin } from "./actions";
-import AdminTemplate from "./templates/AdminTemplate";
-import UserTemplate from "./templates/UserTemplate";
-import { ThemeProvider } from "styled-components";
 import { mainTheme } from "./globalStyles/mainTheme";
+import MainPage from "./views/mainPage/MainPage";
 
 const Root = () => {
   const [loading, setLoading] = useState(false);
@@ -29,13 +27,12 @@ const Root = () => {
 
   return (
     <>
-      <ThemeProvider theme={theme}></ThemeProvider>
       {selectedAdmin ? (
-        <AdminTemplate />
+        <MainPage />
       ) : loading ? (
         <p>Loading...</p>
       ) : (
-        <UserTemplate />
+        <p>zaloguj sie </p>
       )}
     </>
   );
