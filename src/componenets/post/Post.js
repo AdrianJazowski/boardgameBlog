@@ -14,7 +14,7 @@ import SendIcon from "@material-ui/icons/Send";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import InputOption from "../inputOption/InputOption";
 
-const Post = ({ productName, description, coments, id }) => {
+const Post = ({ productName, description, coments, id, author }) => {
   return (
     <PostWrapper>
       <PostHeader>
@@ -27,6 +27,7 @@ const Post = ({ productName, description, coments, id }) => {
         <InputOption Icon={ShareIcon} title="Share" color="grey" />
         <InputOption Icon={SendIcon} title="Send" color="grey" />
       </PostButtons>
+      <p>{author}</p>
     </PostWrapper>
   );
 };
