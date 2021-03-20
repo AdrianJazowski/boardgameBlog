@@ -1,6 +1,10 @@
 /** @format */
 import { actionsTypes } from "./actionsTypes";
-export const loginAdmin = (adminId) => ({
-  type: actionsTypes.LOGIN_ADMIN,
-  payload: adminId,
+export const loginUser = (user) => ({
+  type: actionsTypes.LOGIN_USER,
+  payload: user,
+});
+export const logoutUser = (user) => ({
+  type: actionsTypes.LOGOUT_USER,
+  payload: user,
 });
