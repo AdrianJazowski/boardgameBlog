@@ -1,10 +1,7 @@
 /** @format */
 
 import React from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import { routes } from "../../routes";
-import MainPage from "../../views/mainPage/MainPage";
 import HeaderOption from "../headerOption/HeaderOption";
 import HomeIcon from "@material-ui/icons/Home";
 import {
@@ -14,8 +11,17 @@ import {
   InputWrapper,
   Navigation,
 } from "./NavbarStyles";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../../actions";
+import { auth } from "../../firebase/firebaseConfig";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const logout = () => {
+    dispatch(logoutUser(null));
+    auth.signOut();
+  };
+
   return (
     <NavbarWrapper>
       <Logo />
@@ -28,6 +34,12 @@ const Navbar = () => {
           title="Strona główna"
           direction={routes.home}
         />
+        <HeaderOption
+          Icon={HomeIcon}
+          title="Strona główna"
+          direction={routes.home}
+        />
+        <HeaderOption Icon={HomeIcon} title="Wyloguj" onClick={logout} />
       </Navigation>
     </NavbarWrapper>
   );

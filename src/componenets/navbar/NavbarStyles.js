@@ -44,4 +44,7 @@ export const Input = styled.input`
   background: none;
   cursor: pointer;
 `;
-export const Navigation = styled.ul``;
+export const Navigation = styled.ul`
+  display: flex;
+  align-items: center;
+`;
