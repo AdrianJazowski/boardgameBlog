@@ -1,5 +1,6 @@
 /** @format */
 
 export const actionsTypes = {
-  LOGIN_ADMIN: "LOGIN_ADMIN",
+  LOGIN_USER: "LOGIN_USER",
+  LOGOUT_USER: "LOGOUT_USER",
 };

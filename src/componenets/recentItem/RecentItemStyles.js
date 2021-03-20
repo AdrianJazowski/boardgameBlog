@@ -18,6 +18,5 @@ export const RecentItemWrapper = styled.div`
     background-color: whitesmoke;
     border-radius: 10px;
     cursor: pointer;
-    color: black;
   }
 `;

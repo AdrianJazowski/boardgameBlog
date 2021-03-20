@@ -26,5 +26,8 @@ export const OneGroup = styled.div`
     outline: none;
     border: none;
     cursor: pointer;
+    &:hover {
+      background-color: #ffc069;
+    }
   }
 `;
