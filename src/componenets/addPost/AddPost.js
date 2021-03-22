@@ -1,24 +1,24 @@
 /** @format */
 
 import React from "react";
+import { useSelector } from "react-redux";
 import { addPostToFirestore } from "../../firebase/firestoreUtils";
-import {
-  AddPostForm,
-  AddPostInput,
-  AddPostTextarea,
-  AddPostWrapper,
-} from "./AddPostStyles";
+import { AddPostForm, AddPostWrapper, AddPostDiv } from "./AddPostStyles";
 
 const AddPost = () => {
+  const selectedUser = useSelector(({ user }) => user);
+
   const handleAddPostForm = (e) => {
     e.preventDefault();
 
-    const postName = e.target.postName.value;
-    const postDescription = e.target.postDesc.value;
+    const postTitle = e.target.postTitle.value;
+    const postDescription = e.target.postDescription.value;
 
     const newPost = {
-      productName: postName,
+      postTitle,
       postDescription,
+      postAuthor: selectedUser.userName,
+      comments: [],
     };
 
     addPostToFirestore(newPost);
@@ -28,11 +28,15 @@ const AddPost = () => {
 
   return (
     <AddPostWrapper>
-      <AddPostForm onSubmit={handleAddPostForm}>
-        <AddPostInput type="text" placeholder="name" name="postName" />
-        <AddPostTextarea name="postDesc" id="" cols="30" rows="10" />
-        <button>add post</button>
-      </AddPostForm>
+      <AddPostDiv>
+        <AddPostForm onSubmit={handleAddPostForm}>
+          <p>Tytuł posta</p>
+          <input name="postTitle" type="text" />
+          <p>Treść posta</p>
+          <textarea name="postDescription" type="text" />
+          <button type="submit">Wyślij</button>
+        </AddPostForm>
+      </AddPostDiv>
     </AddPostWrapper>
   );
 };
