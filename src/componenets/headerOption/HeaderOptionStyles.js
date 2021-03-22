@@ -1,7 +1,7 @@
 /** @format */
 
 import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const HeaderOptionWrapper = styled(Link)`
   display: flex;
