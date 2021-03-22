@@ -1,8 +1,6 @@
 /** @format */
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import logo from "../../assets/svg/boardgame.svg";
-import { GiCrossedAxes } from "react-icons/gi";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 export const NavbarWrapper = styled.nav`
@@ -17,9 +15,9 @@ export const NavbarWrapper = styled.nav`
 export const Logo = styled(Link)`
   z-index: 100;
   cursor: pointer;
-  background-size: 80px;
-  height: 80px;
-  width: 80px;
+  background-size: contain;
+  height: 80%;
+  width: 5rem;
   background-repeat: no-repeat;
   background-position: 50%;
   background-image: url(${logo});

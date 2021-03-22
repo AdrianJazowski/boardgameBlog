@@ -1,5 +1,5 @@
 /** @format */
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const RightSidebarWrapper = styled.div`
   position: sticky;

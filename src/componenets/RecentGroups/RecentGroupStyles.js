@@ -1,6 +1,6 @@
 /** @format */
 
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const RecentGropupsWrapper = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 /** @format */
 
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const LeftSidebarWrapper = styled.div`
   position: sticky;
@@ -9,6 +9,7 @@ export const LeftSidebarWrapper = styled.div`
   border-radius: 10px;
   text-align: center;
   height: fit-content;
+  margin: 0 20px;
 `;
 export const TopPart = styled.div`
   display: flex;
