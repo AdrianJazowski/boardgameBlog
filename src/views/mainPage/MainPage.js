@@ -9,40 +9,20 @@ import Content from "../../componenets/content/Content";
 const MainPage = () => {
   return (
     <MainPageWrapper>
-      <LeftSidebar />
       <Content />
+      <LeftSidebar />
       <RightSidebar />
     </MainPageWrapper>
   );
 };
 
 export default MainPage;
-{
-  /* <MainPageWrapper>
-        {posts.map((post) => {
-          const { productName, description, coments, id } = post;
-          return (
-            <PostsList key={id}>
-              <OnePostContainer>
-                <PostLink
-                  to={{
-                    pathname: `/post/${productName.replace(/\s/g, "")}`,
-                    state: {
-                      ...post,
-                    },
-                  }}
-                ></PostLink>
 
-                <PostContents>
-                  <PostHeading>{productName}</PostHeading>
-                  <PostHeading>{description}</PostHeading>
-                  {coments.map((coment) => (
-                    <p>{coment}</p>
-                  ))}
-                </PostContents>
-              </OnePostContainer>
-            </PostsList>
-          );
-        })}
-      </MainPageWrapper>  */
-}
+// <PostLink
+//   to={{
+//     pathname: `/post/${productName.replace(/\s/g, "")}`,
+//     state: {
+//       ...post,
+//     },
+//   }}
+// ></PostLink>

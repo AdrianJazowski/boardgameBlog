@@ -1,9 +1,8 @@
 /** @format */
-import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const MainPageWrapper = styled.div`
   display: flex;
-  max-width: 1200px;
+  max-width: 80vw;
   margin: 20px auto;
 `;

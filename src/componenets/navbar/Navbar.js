@@ -4,6 +4,7 @@ import React from "react";
 import { routes } from "../../routes";
 import HeaderOption from "../headerOption/HeaderOption";
 import HomeIcon from "@material-ui/icons/Home";
+import PostAddIcon from "@material-ui/icons/PostAdd";
 import {
   NavbarWrapper,
   Logo,
@@ -35,9 +36,9 @@ const Navbar = () => {
           direction={routes.home}
         />
         <HeaderOption
-          Icon={HomeIcon}
-          title="Strona główna"
-          direction={routes.home}
+          Icon={PostAddIcon}
+          title="Dodaj post"
+          direction={routes.addPost}
         />
         <HeaderOption Icon={HomeIcon} title="Wyloguj" onClick={logout} />
       </Navigation>
