@@ -25,8 +25,8 @@ export const LoginForm = styled.form`
     width: 350px;
     height: 50px;
     font-size: large;
-    color: #fff;
-    background-color: #0075b1;
+    color: ${({ theme }) => theme.black};
+    background-color: ${({ theme }) => theme.primary};
     border-radius: 5px;
   }
 `;
