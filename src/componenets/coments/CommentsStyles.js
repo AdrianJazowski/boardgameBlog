@@ -2,7 +2,7 @@
 
 import styled, { css } from "styled-components";
 
-export const WrapperForComentsComponent = styled.div`
+export const WrapperForCommentsComponent = styled.div`
   ${({ visible }) =>
     !visible &&
     css`
@@ -10,7 +10,7 @@ export const WrapperForComentsComponent = styled.div`
     `}
 `;
 
-export const ComentsWrapper = styled.div`
+export const CommentsWrapper = styled.div`
   background-color: white;
   padding: 15px;
   margin-bottom: 10px;
@@ -18,15 +18,24 @@ export const ComentsWrapper = styled.div`
   border: 1px solid lightgray;
 `;
 
-export const ComentsLi = styled.li`
+export const CommentsLi = styled.li`
   list-style: none;
 `;
-export const OneComentAuthorAndContents = styled.div`
+export const OneCommentAuthorAndContents = styled.div`
   display: flex;
   flex-direction: column;
+
+  p {
+    font-size: 12px;
+    margin: 0 0 5px 0;
+  }
+  h4 {
+    font-size: 18px;
+    color: ${({ theme }) => theme.black};
+  }
 `;
 
-export const InputInComents = styled.div`
+export const FormInComments = styled.form`
   display: flex;
   background-color: white;
   width: 100%;
@@ -41,5 +50,6 @@ export const InputInComents = styled.div`
     width: 100%;
     color: gray;
     border: 1px solid grey;
+    outline: none;
   }
 `;
