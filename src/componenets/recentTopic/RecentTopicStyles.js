@@ -2,7 +2,7 @@
 
 import styled from "styled-components";
 
-export const RecentItemWrapper = styled.div`
+export const RecentTopicWrapper = styled.div`
   display: flex;
   font-size: 13px;
   color: red;

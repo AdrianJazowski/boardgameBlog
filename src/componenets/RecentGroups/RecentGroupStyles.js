@@ -20,6 +20,7 @@ export const OneGroup = styled.div`
   button {
     background-color: ${({ theme }) => theme.primary};
     color: ${({ theme }) => theme.black};
+    width: 150px;
     margin: 5px;
     padding: 5px;
     border-radius: 5px;
