@@ -5,4 +5,5 @@ export const MainPageWrapper = styled.div`
   display: flex;
   max-width: 80vw;
   margin: 20px auto;
+  justify-content: center;
 `;
