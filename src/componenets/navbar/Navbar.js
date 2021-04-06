@@ -5,6 +5,7 @@ import { routes } from "../../routes";
 import HeaderOption from "../headerOption/HeaderOption";
 import HomeIcon from "@material-ui/icons/Home";
 import PostAddIcon from "@material-ui/icons/PostAdd";
+import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import {
   NavbarWrapper,
   Logo,
@@ -25,7 +26,7 @@ const Navbar = () => {
 
   return (
     <NavbarWrapper>
-      <Logo />
+      <Logo to={routes.home} />
       <InputWrapper>
         <Input />
       </InputWrapper>
@@ -40,7 +41,11 @@ const Navbar = () => {
           title="Dodaj post"
           direction={routes.addPost}
         />
-        <HeaderOption Icon={HomeIcon} title="Wyloguj" onClick={logout} />
+        <HeaderOption
+          Icon={PowerSettingsNewIcon}
+          title="Wyloguj"
+          onClick={logout}
+        />
       </Navigation>
     </NavbarWrapper>
   );
