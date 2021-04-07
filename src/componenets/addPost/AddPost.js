@@ -19,6 +19,8 @@ const AddPost = () => {
       postDescription,
       postAuthor: selectedUser.userName,
       comments: [],
+      likeCounter: 0,
+      whoLikedThisPost: [],
     };
 
     addPostToFirestore(newPost);

@@ -47,4 +47,8 @@ export const AddPostForm = styled.form`
     border-radius: 30px;
     resize: vertical;
   }
+  button {
+    background-color: transparent;
+    outline: none;
+  }
 `;
