@@ -37,7 +37,6 @@ const Comments = ({ comments, visible, postId }) => {
             type="text"
             placeholder="wpisz swój komentarz"
           />
-          <button type="submit">wyslij</button>
         </FormInComments>
 
         {comments ? (
@@ -47,7 +46,7 @@ const Comments = ({ comments, visible, postId }) => {
               return (
                 <CommentsLi key={commentAuthorName + commentContents}>
                   <OneCommentAuthorAndContents>
-                    <p>{commentAuthorName}</p>
+                    <p>Author: {commentAuthorName}</p>
                     <h4>{commentContents}</h4>
                   </OneCommentAuthorAndContents>
                 </CommentsLi>

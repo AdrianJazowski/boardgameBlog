@@ -24,7 +24,10 @@ export const CommentsLi = styled.li`
 export const OneCommentAuthorAndContents = styled.div`
   display: flex;
   flex-direction: column;
-
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin: 5px 0;
+  padding: 5px;
   p {
     font-size: 12px;
     margin: 0 0 5px 0;
