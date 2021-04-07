@@ -17,10 +17,10 @@ export const PostHeader = styled.div`
 export const PostInfo = styled.div`
   font-size: 24px;
   color: ${({ theme }) => theme.black};
-  font-weight: 500;
 `;
 export const PostBody = styled.div`
   overflow-wrap: anywhere;
+  color: ${({ theme }) => theme.black};
 `;
 export const PostButtons = styled.div`
   display: flex;

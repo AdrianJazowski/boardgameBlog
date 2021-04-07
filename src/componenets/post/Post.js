@@ -15,8 +15,10 @@ import SendIcon from "@material-ui/icons/Send";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import IconOptions from "../iconOptions/IconOptions";
 import ArrowUpwardOutlinedIcon from "@material-ui/icons/ArrowUpwardOutlined";
-import { addPostToLikedPosts, likePost } from "../../firebase/firestoreUtils";
+import { likePost } from "../../firebase/firestoreUtils";
 import { useSelector } from "react-redux";
+import Coments from "../coments/Comments";
+import { likePost as likePostAction } from "../../actions";
 
 const Post = ({
   comments,
@@ -26,54 +28,63 @@ const Post = ({
   postDescription,
   postTitle,
   post,
+  whoLikedThisPost,
 }) => {
-  const [temporaryLike, setTemporaryLike] = useState();
+  const [visible, setVisible] = useState(false);
   const selectedUser = useSelector(({ user }) => user);
   const handleLikePost = () => {
     const upadtedLikeCounter = likeCounter + 1;
-    likePost(postId, upadtedLikeCounter);
-
-    const updatedLikedPosts = [...selectedUser.likedPosts, postId];
-
-    addPostToLikedPosts(selectedUser.uid, updatedLikedPosts);
-    setTemporaryLike(true);
+    const newWhoLikedThisPost = [...whoLikedThisPost, selectedUser.uid];
+    likePost(postId, upadtedLikeCounter, newWhoLikedThisPost);
+    console.log(postId, selectedUser.uid);
+  };
+  const handleShowComents = () => {
+    setVisible(!visible);
   };
 
-  const isLiked = selectedUser.likedPosts.includes(postId) ? true : false;
+  const isLiked =
+    whoLikedThisPost.lenght <= 0
+      ? null
+      : whoLikedThisPost.includes(selectedUser.uid)
+      ? true
+      : false;
 
   return (
-    <PostWrapper>
-      <PostHeader>
-        <PostInfo>{postTitle}</PostInfo>
-        <LikeCounter>
-          {likeCounter !== 0 ? likeCounter : null}
-          <ArrowUpwardOutlinedIcon />
-        </LikeCounter>
-      </PostHeader>
-      <PostBody>{postDescription}</PostBody>
-      <PostButtons>
-        <IconOptions
-          Icon={ThumbUpIcon}
-          title="Like"
-          color={
-            isLiked
-              ? isLiked
-                ? "#2d76ece3"
-                : "grey"
-              : temporaryLike
-              ? "#2d76ece3"
-              : "grey"
-          }
-          onClickFn={handleLikePost}
-          isLiked={isLiked}
-          temporaryLike={temporaryLike}
-        />
-        <IconOptions Icon={ChatIcon} title="Comments" color="grey" />
-        <IconOptions Icon={ShareIcon} title="Share" color="grey" />
-        <IconOptions Icon={SendIcon} title="Send" color="grey" />
-      </PostButtons>
-      <p>{postAuthor}</p>
-    </PostWrapper>
+    <>
+      <PostWrapper>
+        <PostHeader>
+          <PostInfo>{postTitle}</PostInfo>
+          {likeCounter !== 0 ? (
+            <LikeCounter>
+              {likeCounter}
+              <ArrowUpwardOutlinedIcon />
+            </LikeCounter>
+          ) : null}
+        </PostHeader>
+        <PostBody>{postDescription}</PostBody>
+        <PostButtons>
+          <IconOptions
+            Icon={ThumbUpIcon}
+            title="Like"
+            color={isLiked ? "#ffc033" : "grey"}
+            onClickFn={() => {
+              handleLikePost();
+            }}
+            isLiked={isLiked}
+          />
+          <IconOptions
+            Icon={ChatIcon}
+            onClickFn={handleShowComents}
+            title="Comments"
+            color="grey"
+          />
+          <IconOptions Icon={ShareIcon} title="Share" color="grey" />
+          <IconOptions Icon={SendIcon} title="Send" color="grey" />
+        </PostButtons>
+        <p> Author: {postAuthor}</p>
+        <Coments visible={visible} comments={comments} postId={postId} />
+      </PostWrapper>
+    </>
   );
 };
 
