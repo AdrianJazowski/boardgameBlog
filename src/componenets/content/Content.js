@@ -1,13 +1,15 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPosts } from "../../actions";
 import { postsCollection } from "../../firebase/firestoreUtils";
 import Post from "../post/Post";
 import { ContentWrapper } from "./ContentStyles";
 
 const Content = () => {
-  const [posts, setPosts] = useState([]);
-
+  const dispatch = useDispatch();
+  const posts = useSelector(({ posts }) => posts);
   useEffect(() => {
     const subscribe = postsCollection.onSnapshot((snapshot) => {
       const dataFromPostsCollection = snapshot.docs.map((doc) => ({
@@ -15,7 +17,7 @@ const Content = () => {
         ...doc.data(),
       }));
 
-      setPosts(dataFromPostsCollection);
+      dispatch(getPosts(dataFromPostsCollection));
     });
 
     return () => {
