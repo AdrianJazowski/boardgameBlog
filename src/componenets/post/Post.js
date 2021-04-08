@@ -8,6 +8,7 @@ import {
   PostBody,
   PostButtons,
   LikeCounter,
+  AuthorAndDelete,
 } from "./PostStyles";
 import ChatIcon from "@material-ui/icons/Chat";
 import ShareIcon from "@material-ui/icons/Share";
@@ -15,10 +16,9 @@ import SendIcon from "@material-ui/icons/Send";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import IconOptions from "../iconOptions/IconOptions";
 import ArrowUpwardOutlinedIcon from "@material-ui/icons/ArrowUpwardOutlined";
-import { likePost } from "../../firebase/firestoreUtils";
+import { deletePost, likePost } from "../../firebase/firestoreUtils";
 import { useSelector } from "react-redux";
 import Coments from "../coments/Comments";
-import { likePost as likePostAction } from "../../actions";
 
 const Post = ({
   comments,
@@ -29,6 +29,7 @@ const Post = ({
   postTitle,
   post,
   whoLikedThisPost,
+  authorUid,
 }) => {
   const [visible, setVisible] = useState(false);
   const selectedUser = useSelector(({ user }) => user);
@@ -40,6 +41,9 @@ const Post = ({
   };
   const handleShowComents = () => {
     setVisible(!visible);
+  };
+  const handleDeletePost = () => {
+    deletePost(postId);
   };
 
   const isLiked =
@@ -53,7 +57,16 @@ const Post = ({
     <>
       <PostWrapper>
         <PostHeader>
-          <PostInfo>{postTitle}</PostInfo>
+          <PostInfo
+            to={{
+              pathname: `/post/${postTitle.replace(/\s/g, "")}`,
+              state: {
+                ...post,
+              },
+            }}
+          >
+            {postTitle}
+          </PostInfo>
           {likeCounter !== 0 ? (
             <LikeCounter>
               {likeCounter}
@@ -81,7 +94,13 @@ const Post = ({
           <IconOptions Icon={ShareIcon} title="Share" color="grey" />
           <IconOptions Icon={SendIcon} title="Send" color="grey" />
         </PostButtons>
-        <p> Author: {postAuthor}</p>
+        <AuthorAndDelete>
+          <p> Author: {postAuthor}</p>
+          {selectedUser.uid === authorUid ? (
+            <button onClick={handleDeletePost}>Usuń post</button>
+          ) : null}
+        </AuthorAndDelete>
+
         <Coments visible={visible} comments={comments} postId={postId} />
       </PostWrapper>
     </>
