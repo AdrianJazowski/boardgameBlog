@@ -10,7 +10,6 @@ import GlobalStyles from "../globalStyles/GlobalStyles";
 import { mainTheme } from "../globalStyles/mainTheme";
 import Root from "../Root";
 import { routes } from "../routes";
-import Login from "../views/Login";
 import SinglePost from "../views/singlePost/SinglePost";
 
 const Router = () => {
@@ -22,9 +21,8 @@ const Router = () => {
         <Navbar />
         <Switch>
           <Route exact path={routes.home} component={Root} />
-          <Route path={routes.login} component={Login} />
-          <Route path={routes.singlePost} component={SinglePost} />
           <Route path={routes.addPost} component={AddPost} />
+          <Route path={routes.post} component={SinglePost} />
         </Switch>
       </ThemeProvider>
     </BrowserRouter>
