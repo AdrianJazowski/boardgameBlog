@@ -7,6 +7,7 @@ import { AddPostForm, AddPostWrapper, AddPostDiv } from "./AddPostStyles";
 
 const AddPost = () => {
   const selectedUser = useSelector(({ user }) => user);
+  console.log(selectedUser);
 
   const handleAddPostForm = (e) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ const AddPost = () => {
       comments: [],
       likeCounter: 0,
       whoLikedThisPost: [],
+      authorUid: selectedUser.uid,
     };
 
     addPostToFirestore(newPost);
