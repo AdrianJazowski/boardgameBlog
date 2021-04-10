@@ -17,12 +17,9 @@ export const addUser = (docId, user) => {
   });
 };
 
-export const likePost = (postId, likeCounter, whoLikedThisPost) => {
+export const likePost = (postId, likeCounter) => {
   postsCollection.doc(postId).update({
     likeCounter,
-  });
-  postsCollection.doc(postId).update({
-    whoLikedThisPost,
   });
 };
 
@@ -36,8 +33,4 @@ export const addPostToLikedPosts = (userId, likedPosts) => {
   usersCollections.doc(userId).update({
     likedPosts,
   });
-};
-
-export const deletePost = (postId) => {
-  postsCollection.doc(postId).delete();
 };

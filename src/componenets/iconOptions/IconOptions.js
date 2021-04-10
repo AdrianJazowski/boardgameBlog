@@ -3,12 +3,19 @@
 import React from "react";
 import { IconWrapperOptions } from "./IconOptionsStyles";
 
-const IconOptions = ({ Icon, title, color, onClickFn, isLiked }) => {
+const IconOptions = ({
+  Icon,
+  title,
+  color,
+  onClickFn,
+  isLiked,
+  temporaryLike,
+}) => {
   return (
     <IconWrapperOptions
       onClick={onClickFn}
-      disabled={isLiked}
-      isLiked={isLiked}
+      disabled={isLiked ? isLiked : temporaryLike}
+      isLiked
     >
       <Icon style={{ fill: color }} />
       <h4>{title}</h4>

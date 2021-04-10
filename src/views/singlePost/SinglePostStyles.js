@@ -4,29 +4,27 @@ import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 export const SinglePostWrapper = styled.div`
-  width: 60%;
-  background-color: white;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  border: 1px solid lightgray;
-  margin: 20px auto;
-`;
-export const SinglePostHeader = styled.div`
   display: flex;
-  position: relative;
-  margin-bottom: 10px;
+  width: 100vw;
+  height: 90vh;
 `;
-
-export const SinglePostTitle = styled.h1`
-  font-size: 24px;
-  text-decoration: none;
-  color: ${({ theme }) => theme.black};
-  :hover {
-    color: ${({ theme }) => theme.primary};
-  }
+export const PostContents = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  width: 53vw;
+  margin-left: 20%;
+  margin-top: 5%;
 `;
-export const SinglePostDescription = styled.p`
-  overflow-wrap: anywhere;
-  color: ${({ theme }) => theme.black};
+export const PostImg = styled.img`
+  height: 500px;
+  width: 53vw;
+  border: 5px solid #26cdc7;
+  margin-bottom: 24px;
 `;
+export const PostTitle = styled.h1`
+  align-self: end;
+  margin-bottom: 20px;
+`;
+export const PostDescription = styled.p``;

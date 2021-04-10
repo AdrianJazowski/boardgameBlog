@@ -23,9 +23,5 @@ export const HeaderOptionWrapper = styled(Link)`
     &:hover {
       fill: black;
     }
-    @media ${({ theme }) => theme.viewPorts.viewport7} {
-      height: 35px;
-      width: 35px;
-    }
   }
 `;
