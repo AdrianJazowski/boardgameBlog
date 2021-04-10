@@ -16,13 +16,7 @@ export const IconWrapperOptions = styled.button`
     background-color: whitesmoke;
     border-radius: 10px;
   }
-  /* svg {
-    ${({ isLiked }) =>
-    isLiked &&
-    css`
-      fill: #ffc033;
-    `}
-  } */
+
   h4 {
     margin-left: 5px;
   }

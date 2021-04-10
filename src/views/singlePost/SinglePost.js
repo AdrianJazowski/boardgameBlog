@@ -1,28 +1,33 @@
 /** @format */
 
 import React from "react";
-import Sidebar from "../../componenets/sidebar/Sidebar";
+import Post from "../../componenets/post/Post";
+import { LikeCounter } from "../../componenets/post/PostStyles";
 import {
-  PostContents,
-  PostImg,
-  PostTitle,
   SinglePostWrapper,
-  PostDescription,
+  SinglePostHeader,
+  SinglePostTitle,
+  SinglePostDescription,
 } from "./SinglePostStyles";
 
 const SinglePost = (props) => {
-  console.log(props);
-
-  const { productName, photo, postDescription } = props.location.state;
+  const {
+    postTitle,
+    postDescription,
+    postId,
+    postAuthor,
+    likeCounter,
+  } = props.location.state;
+  console.log(postTitle);
   return (
-    <SinglePostWrapper>
-      <PostContents>
-        <PostImg src={photo} />
-        <PostTitle>{productName}</PostTitle>
-        <PostDescription>{postDescription}</PostDescription>
-      </PostContents>
-      <Sidebar />
-    </SinglePostWrapper>
+    // <SinglePostWrapper>
+    //   <SinglePostHeader>
+    //     <SinglePostTitle>{postTitle}</SinglePostTitle>
+    //     <LikeCounter>{likeCounter}</LikeCounter>
+    //   </SinglePostHeader>
+    //   <SinglePostDescription>{postDescription}</SinglePostDescription>
+    // </SinglePostWrapper>
+    <div>cos</div>
   );
 };
 

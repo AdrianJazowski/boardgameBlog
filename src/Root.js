@@ -1,20 +1,17 @@
 /** @format */
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { auth } from "./firebase/firebaseConfig";
-import { loginAdmin, loginUser } from "./actions";
+import { loginUser } from "./actions";
 import MainPage from "./views/mainPage/MainPage";
-import Login from "./componenets/login/Login";
+import LoginAndRegister from "./componenets/loginAndRegister/LoginAndRegister";
 import { usersCollections } from "./firebase/firestoreUtils";
 
 const Root = () => {
-  const [loading, setLoading] = useState(false);
-
   const selectedUser = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setLoading(true);
     auth.onAuthStateChanged((user) => {
       if (user) {
         usersCollections
@@ -22,15 +19,28 @@ const Root = () => {
           .get()
           .then((doc) => dispatch(loginUser(doc.data())))
           .catch((err) => console.log(err));
-
-        setLoading(false);
       } else {
         dispatch(loginUser(null));
       }
     });
   }, []);
 
-  return <>{selectedUser ? <MainPage /> : <Login />}</>;
+  useEffect(() => {
+    const subscribe = usersCollections.onSnapshot((snapshot) => {
+      const dataFromPostsCollection = snapshot.docs.map((doc) => ({
+        postId: doc.id,
+        ...doc.data(),
+      }));
+
+      // dispatch(getPosts(dataFromPostsCollection));
+    });
+
+    return () => {
+      subscribe();
+    };
+  }, []);
+
+  return <>{selectedUser ? <MainPage /> : <LoginAndRegister />}</>;
 };
 
 export default Root;

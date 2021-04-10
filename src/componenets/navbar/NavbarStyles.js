@@ -23,7 +23,7 @@ export const Logo = styled(Link)`
   background-image: url(${logo});
   margin: auto 40px;
 `;
-export const InputWrapper = styled.div`
+export const InputWrapper = styled.form`
   padding: 10px;
   display: flex;
   align-items: center;
@@ -35,12 +35,19 @@ export const InputWrapper = styled.div`
   background-color: #eef3f8;
   border: 1px solid grey;
 `;
+export const InputButton = styled.button`
+  display: flex;
+  outline: none;
+  background-color: transparent;
+  background: none;
+  border: none;
+  cursor: pointer;
+`;
 export const Input = styled.input`
   width: 100%;
   outline: none;
   border: none;
   background: none;
-  cursor: pointer;
 `;
 export const Navigation = styled.ul`
   display: flex;
