@@ -23,10 +23,9 @@ export const Logo = styled(Link)`
   background-image: url(${logo});
   margin: auto 40px;
 `;
-export const InputWrapper = styled.form`
-  padding: 10px;
+export const InputWrapper = styled.div`
   display: flex;
-  align-items: center;
+  padding: 10px;
   border-radius: 5px;
   margin: auto 30px;
   height: 40px;
@@ -34,6 +33,11 @@ export const InputWrapper = styled.form`
   color: gray;
   background-color: #eef3f8;
   border: 1px solid grey;
+  align-items: center;
+  form {
+    display: flex;
+    width: 100%;
+  }
 `;
 export const InputButton = styled.button`
   display: flex;
@@ -43,6 +47,7 @@ export const InputButton = styled.button`
   border: none;
   cursor: pointer;
 `;
+
 export const Input = styled.input`
   width: 100%;
   outline: none;
