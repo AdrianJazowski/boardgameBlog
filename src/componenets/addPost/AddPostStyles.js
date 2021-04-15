@@ -50,5 +50,13 @@ export const AddPostForm = styled.form`
   button {
     background-color: transparent;
     outline: none;
+    cursor: pointer;
+    border: 1px solid lightgrey;
+    border-radius: 30px;
+    padding: 10px;
+    transition: 0.2s;
+    :hover {
+      background-color: rgb(240, 240, 240, 0.9);
+    }
   }
 `;
