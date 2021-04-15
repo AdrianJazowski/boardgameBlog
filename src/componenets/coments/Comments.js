@@ -39,7 +39,7 @@ const Comments = ({ comments, visible, postId }) => {
           />
         </FormInComments>
 
-        {comments ? (
+        {comments.length !== 0 ? (
           <CommentsWrapper>
             {comments.map((comment) => {
               const { commentAuthorName, commentContents } = comment;
