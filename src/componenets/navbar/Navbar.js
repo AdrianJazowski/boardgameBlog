@@ -1,12 +1,13 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import { routes } from "../../routes";
 import HeaderOption from "../headerOption/HeaderOption";
 import HomeIcon from "@material-ui/icons/Home";
 import PostAddIcon from "@material-ui/icons/PostAdd";
 import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import SearchIcon from "@material-ui/icons/Search";
+import ClearIcon from "@material-ui/icons/Clear";
 import {
   NavbarWrapper,
   Logo,
@@ -21,6 +22,7 @@ import { auth } from "../../firebase/firebaseConfig";
 
 const Navbar = () => {
   const selectedInitalPosts = useSelector(({ initalPosts }) => initalPosts);
+  const [temporaryInputValue, setTemporaryInputValue] = useState("");
 
   const dispatch = useDispatch();
   const logout = () => {
@@ -43,19 +45,33 @@ const Navbar = () => {
     if (searchInputValue.length === 0) {
       dispatch(searchPosts(selectedInitalPosts));
     }
+    setTemporaryInputValue(searchInputValue);
+  };
 
-    e.target.reset();
+  const handleResetPosts = (e) => {
+    e.preventDefault();
+
+    dispatch(searchPosts(selectedInitalPosts));
+    setTemporaryInputValue("");
   };
 
   return (
     <NavbarWrapper>
       <Logo to={routes.home} />
-      <InputWrapper onSubmit={handleSearchPost}>
-        <Input name="searchPost" />
+      <InputWrapper>
+        <form onSubmit={handleSearchPost}>
+          <Input name="searchPost" />
+          <InputButton>
+            {temporaryInputValue.length === 0 ? <SearchIcon /> : null}
+          </InputButton>
+        </form>
         <InputButton>
-          <SearchIcon />
+          {temporaryInputValue.length !== 0 ? (
+            <ClearIcon onClick={handleResetPosts} />
+          ) : null}
         </InputButton>
       </InputWrapper>
+
       <Navigation>
         <HeaderOption
           Icon={HomeIcon}
