@@ -19,6 +19,7 @@ import ArrowUpwardOutlinedIcon from "@material-ui/icons/ArrowUpwardOutlined";
 import { deletePost, likePost } from "../../firebase/firestoreUtils";
 import { useSelector } from "react-redux";
 import Coments from "../coments/Comments";
+import Alert from "../alert/Alert";
 
 const Post = ({
   comments,
@@ -30,6 +31,7 @@ const Post = ({
   post,
   whoLikedThisPost,
   authorUid,
+  singlePostView,
 }) => {
   const [visible, setVisible] = useState(false);
   const selectedUser = useSelector(({ user }) => user);
@@ -37,7 +39,6 @@ const Post = ({
     const upadtedLikeCounter = likeCounter + 1;
     const newWhoLikedThisPost = [...whoLikedThisPost, selectedUser.uid];
     likePost(postId, upadtedLikeCounter, newWhoLikedThisPost);
-    console.log(postId, selectedUser.uid);
   };
   const handleShowComents = () => {
     setVisible(!visible);
@@ -57,16 +58,20 @@ const Post = ({
     <>
       <PostWrapper>
         <PostHeader>
-          <PostInfo
-            to={{
-              pathname: `/post/${postTitle.replace(/\s/g, "")}`,
-              state: {
-                ...post,
-              },
-            }}
-          >
-            {postTitle}
-          </PostInfo>
+          {singlePostView ? (
+            <h2>{postTitle}</h2>
+          ) : (
+            <PostInfo
+              to={{
+                pathname: `/post/${postTitle.replace(/\s/g, "")}`,
+                state: {
+                  post,
+                },
+              }}
+            >
+              {postTitle}
+            </PostInfo>
+          )}
           {likeCounter !== 0 ? (
             <LikeCounter>
               {likeCounter}
@@ -97,7 +102,7 @@ const Post = ({
         <AuthorAndDelete>
           <p> Author: {postAuthor}</p>
           {selectedUser.uid === authorUid ? (
-            <button onClick={handleDeletePost}>Usuń post</button>
+            <Alert handleDeletePost={handleDeletePost} />
           ) : null}
         </AuthorAndDelete>
 
