@@ -1,9 +1,12 @@
 /** @format */
 
 import { actionsTypes } from "../actions/actionsTypes";
+import { getUserFromLocalStorage } from "../utils/localStorageGetter";
 
 const initialState = {
-  user: null,
+  user: getUserFromLocalStorage(),
+  initalPosts: [],
+  posts: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -21,6 +24,29 @@ const reducer = (state = initialState, action) => {
         user: payload,
       };
 
+    case actionsTypes.GET_POSTS:
+      return {
+        ...state,
+        posts: [...payload],
+        initalPosts: [...payload],
+      };
+    case actionsTypes.LIKE_POST:
+      const postsAfterLike = state.posts.map((post) => {
+        if (post.postId === payload) {
+          post.likeCounter++;
+        }
+        return post;
+      });
+      return {
+        ...state,
+        posts: [...postsAfterLike],
+      };
+
+    case actionsTypes.SEARCH_POSTS:
+      return {
+        ...state,
+        posts: [...payload],
+      };
     default:
       return state;
   }

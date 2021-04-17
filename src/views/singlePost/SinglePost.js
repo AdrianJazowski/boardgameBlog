@@ -1,29 +1,11 @@
 /** @format */
 
 import React from "react";
-import Sidebar from "../../componenets/sidebar/Sidebar";
-import {
-  PostContents,
-  PostImg,
-  PostTitle,
-  SinglePostWrapper,
-  PostDescription,
-} from "./SinglePostStyles";
+import Post from "../../componenets/post/Post";
 
 const SinglePost = (props) => {
-  console.log(props);
-
-  const { productName, photo, postDescription } = props.location.state;
-  return (
-    <SinglePostWrapper>
-      <PostContents>
-        <PostImg src={photo} />
-        <PostTitle>{productName}</PostTitle>
-        <PostDescription>{postDescription}</PostDescription>
-      </PostContents>
-      <Sidebar />
-    </SinglePostWrapper>
-  );
+  const { post } = props.location.state;
+  return <Post {...post} singlePostView />;
 };
 
 export default SinglePost;
